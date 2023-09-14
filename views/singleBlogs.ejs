@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <style>
+        /* Internal CSS Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-post {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
+        }
+
+        .blog-post:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .blog-post h2 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .blog-post p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .date {
+            color: #000000;
+            font-size: 20px;
+        }
+
+        .author {
+            color: #000000;
+            font-size: 20px;
+
+        }
+
+        a{
+            color: rgb(232, 83, 19);
+            text-decoration: none;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <%- include('components/navbar') %>
+
+
+    
+    <div class="container">
+        <button><a href="/">Back</a></button>
+            <br><br>
+        <div class="blog-post">
+
+            <div class="date"><%- blog[0].title %></div>
+            <div class="author"><%- blog[0].subtitle %></div>
+        </div>
+
+
+        <div class="blog-post">
+            <!-- <h2>Second Blog Post</h2> -->
+            <p><%- blog[0].description  %></p>
+
+
+            <p class="date">Published on <%- blog[0].createdAt.toISOString().slice(0, 10) %>.</p>
+        </div>
+        <button><a href="/delete/<%- blog[0].id %>">Delete</a></button>
+        <button><a href="/edit/<%- blog[0].id %>">Edit</a></button>
+    </div>
+
+    <%- include('components/footer') %>
+
+</body>
+</html>
